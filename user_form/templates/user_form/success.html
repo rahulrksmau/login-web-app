@@ -1,0 +1,8 @@
+{% include "user_form/base.html" %}
+{% block head %}
+ Registration Completed Successfully<br>
+{% endblock %}
+{% block content %}
+    Thank you for registering.
+    <a href="{% url 'logout'%}">Login</a>
+{% endblock %}

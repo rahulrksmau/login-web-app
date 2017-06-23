@@ -1,0 +1,12 @@
+{% include "user_form/base.html" %}
+{% block head %}Welcome to Django{% endblock %}
+{% block content %}
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <p>Welcome {{ user.username  }} !!!</p><br>
+     <p>Your Email is  {{ user.email  }} !!!</p><br>
+    <a href="{% url 'logout'%}">Logout</a><br>
+    <a href="{% url 'change_pass' %}"> Reset password</a>
+{% endblock %}

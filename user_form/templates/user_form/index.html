@@ -1,0 +1,36 @@
+{% include "user_form/base.html" %}
+
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  
+
+</head>
+
+{% if error_message %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+<body>
+  <div class="login">
+	<h1>Login</h1>
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+    	<input type="text" name="username" placeholder="Username" required="required" />
+        <input type="password" name="password" placeholder="Password" required="required" />
+        <button type="submit" class="btn btn-primary btn-block" value="{{ next }}" name="next">Let me in.</button>
+    </form>
+</div>
+    {% load static %}
+    <script src={% static 'js/index.js' %}></script>
+
+</body>
+</html>
